@@ -8,13 +8,18 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ProblemeComponent } from './probleme/probleme.component';
 import { RouterModule } from '@angular/router';
+import { ProduitComponent } from './produit/produit.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    ProblemeComponent
+    ProduitComponent,
+
+
   ],
   imports: [
     BrowserModule,
