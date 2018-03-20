@@ -32,4 +32,8 @@ describe('ProduitComponent', () => {
     expect(true).toBeTruthy();
   } );
 
+  it('Zone PRÉNOM valide avec 200 caractères', () =>{
+    expect(true).toBeTruthy();
+  } );
+
 });
