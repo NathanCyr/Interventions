@@ -22,7 +22,7 @@ describe('ProduitComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-<<<<<<< HEAD
+
 
   it('Zone PRÉNOM invalide avec 2 caractères', () =>{
     expect(true).toBeTruthy();
@@ -31,6 +31,5 @@ describe('ProduitComponent', () => {
   it('Zone PRÉNOM valide avec 3 caractères', () =>{
     expect(true).toBeTruthy();
   } );
-=======
->>>>>>> f5bd1bc1264b1287a842576f07185da6d1f7856d
+
 });
