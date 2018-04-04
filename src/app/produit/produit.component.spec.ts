@@ -22,18 +22,4 @@ describe('ProduitComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-
-  it('Zone PRÉNOM invalide avec 2 caractères', () =>{
-    expect(true).toBeTruthy();
-  } );
-
-  it('Zone PRÉNOM valide avec 3 caractères', () =>{
-    expect(true).toBeTruthy();
-  } );
-
-  it('Zone PRÉNOM valide avec 200 caractères', () =>{
-    expect(true).toBeTruthy();
-  } );
-
 });
