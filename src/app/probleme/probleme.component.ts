@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
-@Component({
-  selector: 'Inter-probleme',
-  templateUrl: './probleme.component.html',
-  styleUrls: ['./probleme.component.css']
-})
-export class ProblemeComponent implements OnInit {
-
-  problemeForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit() {
-    this.problemeForm = this.fb.group({
-        nomProbleme: ['', [Validators.minLength(2)]]
-    });
-  }
-
-}
+import { VerifierCaracteresValidator } from '../Shared/caracteres-validator';
+ 
+ @Component({
+   selector: 'Inter-probleme',
+   templateUrl: './probleme.component.html',
+   styleUrls: ['./probleme.component.css']
+ })
+ export class ProblemeComponent implements OnInit {
+ 
+   problemeForm: FormGroup;
+   constructor(private fb:FormBuilder) { }
+ 
+   ngOnInit() {
+     this.problemeForm = this.fb.group({
+ 
+        prenom: ['',[VerifierCaracteresValidator.sansEspaces(), VerifierCaracteresValidator.longueurMinimum(3)]]
+     });
+   }
+ 
+ }

@@ -9,6 +9,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ProblemeComponent } from './probleme/probleme.component';
 import { RouterModule } from '@angular/router';
 import { ProduitComponent } from './produit/produit.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -16,8 +18,7 @@ import { ProduitComponent } from './produit/produit.component';
   declarations: [
     AppComponent,
     AccueilComponent,
-    ProblemeComponent,
-    ProduitComponent,
+    ProblemeComponent
 
 
   ],
@@ -25,8 +26,7 @@ import { ProduitComponent } from './produit/produit.component';
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-
-    
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
