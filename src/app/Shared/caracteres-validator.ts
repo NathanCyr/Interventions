@@ -19,4 +19,13 @@ export class VerifierCaracteresValidator {
            
        };
    }
+   static longueurMaximum(max: number): ValidatorFn {
+    return (c: AbstractControl): { [key: string]: boolean } | null => {
+        if (c.value.trim().length < max) {
+            return { 'longueurMaximum': true };
+        }
+        return { 'longueurMaximum': false };
+        
+    };
+}
 } 
