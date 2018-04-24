@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { VerifierCaracteresValidator } from '../Shared/caracteres-validator';
 import { ProblemeService } from './probleme.service';
 import { ITypeProbleme } from './probleme';
+import { emailMatcherValidator } from '../Shared/emailMatcher-validator';
  
  @Component({
    selector: 'Inter-probleme',
@@ -27,7 +28,7 @@ import { ITypeProbleme } from './probleme';
         telephone: [{value: '', disabled: true}],
         notificationCourrielGroupe: this.fb.group({
           Courriel: [{value: '', disabled: true}],
-          CourrielValidation: [{Value: '', disabled: true}]
+          CourrielValidation: [{value: '', disabled: true}]
 
         })
      });
@@ -39,9 +40,10 @@ import { ITypeProbleme } from './probleme';
    }
 
   appliquerNotifications(typeNotification: string): void{
-    const ControleCourriel = this.problemeForm.get('notificationCourrielGroup.Courriel');
+    const ControleCourriel = this.problemeForm.get('notificationCourrielGroupe.Courriel');
     const ControleTelephone = this.problemeForm.get('telephone');
-    const ControleCourrielValidation = this.problemeForm.get('notificationCourrielGroup.CourrielValidation');
+    const ControleCourrielValidation = this.problemeForm.get('notificationCourrielGroupe.CourrielValidation');
+    const CourrielGroupControl = this.problemeForm.get('notificationCourrielGroupe')
 
     ControleCourriel.clearValidators();
     ControleTelephone.clearValidators();
@@ -55,18 +57,23 @@ import { ITypeProbleme } from './probleme';
     ControleTelephone.disable();
     ControleCourrielValidation.disable();
 
-    if(typeNotification == 'Notifier'){
+    if(typeNotification === 'MeNotifierCourriel'){
       ControleCourriel.enable();
-      ControleCourriel.setValidators([Validators.required]);
+      ControleCourriel.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
+      ControleCourrielValidation.enable();
+      ControleCourrielValidation.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
+      CourrielGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielConfirmation()])])
+    }
+
+    if(typeNotification === 'MeNotifierTelephonr'){
       ControleTelephone.enable();
       ControleTelephone.setValidators([Validators.required]);
-      ControleCourrielValidation.enable();
-      ControleCourrielValidation.setValidators([Validators.required]);
     }
 
     ControleCourriel.updateValueAndValidity();
     ControleTelephone.updateValueAndValidity();
     ControleCourrielValidation.updateValueAndValidity();
+    CourrielGroupControl.updateValueAndValidity();
   }
  
  }
