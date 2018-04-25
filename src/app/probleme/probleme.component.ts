@@ -65,9 +65,9 @@ import { emailMatcherValidator } from '../Shared/emailMatcher-validator';
       CourrielGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielConfirmation()])])
     }
 
-    if(typeNotification === 'MeNotifierTelephonr'){
+    if(typeNotification === 'MeNotifierMessagerie'){
       ControleTelephone.enable();
-      ControleTelephone.setValidators([Validators.required]);
+      ControleTelephone.setValidators([Validators.required],Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
     }
 
     ControleCourriel.updateValueAndValidity();
