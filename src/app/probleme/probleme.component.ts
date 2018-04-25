@@ -63,9 +63,7 @@ import { emailMatcherValidator } from '../Shared/emailMatcher-validator';
       ControleCourrielValidation.enable();
       ControleCourrielValidation.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
       CourrielGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielConfirmation()])])
-    }
-
-    if(typeNotification === 'MeNotifierMessagerie'){
+    }else if(typeNotification === 'MeNotifierMessagerie'){
       ControleTelephone.enable();
       ControleTelephone.setValidators([Validators.required],Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
     }
