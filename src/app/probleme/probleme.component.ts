@@ -24,7 +24,7 @@ import { emailMatcherValidator } from '../Shared/emailMatcher-validator';
         prenom: ['',[VerifierCaracteresValidator.sansEspaces(), VerifierCaracteresValidator.longueurMinimum(3)]],
         nom: ['',[VerifierCaracteresValidator.sansEspaces(), VerifierCaracteresValidator.longueurMaximum(50)]],
         noProbleme: ['', Validators.required],
-        Notification: ['appliquerNotification'],
+        notifier:['PasNotifier'],
         telephone: [{value: '', disabled: true}],
         notificationCourrielGroupe: this.fb.group({
           Courriel: [{value: '', disabled: true}],
@@ -37,6 +37,8 @@ import { emailMatcherValidator } from '../Shared/emailMatcher-validator';
     .subscribe(cat => this.categoriesProbleme = cat,
                error => this.errorMessage = <any>error);  
 
+     this.problemeForm.get('notifier').valueChanges
+     .subscribe(value => this.appliquerNotifications(value));
    }
 
   appliquerNotifications(typeNotification: string): void{
@@ -65,7 +67,7 @@ import { emailMatcherValidator } from '../Shared/emailMatcher-validator';
       CourrielGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielConfirmation()])])
     }else if(typeNotification === 'MeNotifierMessagerie'){
       ControleTelephone.enable();
-      ControleTelephone.setValidators([Validators.required],Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
+      ControleTelephone.setValidators([Validators.required,Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
     }
 
     ControleCourriel.updateValueAndValidity();
