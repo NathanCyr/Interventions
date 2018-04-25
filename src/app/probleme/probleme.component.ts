@@ -22,15 +22,18 @@ import { emailMatcherValidator } from '../Shared/emailMatcher-validator';
      this.problemeForm = this.fb.group({
  
         prenom: ['',[VerifierCaracteresValidator.sansEspaces(), VerifierCaracteresValidator.longueurMinimum(3)]],
-        nom: ['',[VerifierCaracteresValidator.sansEspaces(), VerifierCaracteresValidator.longueurMaximum(50)]],
+        nom: ['',[VerifierCaracteresValidator.sansEspaces(), VerifierCaracteresValidator.longueurMinimum(3)]],
         noProbleme: ['', Validators.required],
         notifier:['PasNotifier'],
         telephone: [{value: '', disabled: true}],
         notificationCourrielGroupe: this.fb.group({
           Courriel: [{value: '', disabled: true}],
           CourrielValidation: [{value: '', disabled: true}]
+        }),
+        descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+        noUnite: '',
+        dateProbleme: {value: Date(), disabled: true} 
 
-        })
      });
 
      this.probleme.obtenirProbleme()

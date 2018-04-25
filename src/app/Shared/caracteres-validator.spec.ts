@@ -20,7 +20,7 @@ describe('sansEspaces Validator', () => {
         let control = { value: 'Une phrase avec des mots'};
         let validator = VerifierCaracteresValidator.sansEspaces();
         let result = validator(control as AbstractControl);
-        expect(result['sansEspaces']).toBe(true);
+        expect(result['sansEspaces']).toBeNull();
         });
 
     it('Une phrase avec 3 espaces, des mots et ensuite 3 espaces est valide', () => {
