@@ -28,12 +28,12 @@ describe('stocks App', () => {
   });    
 
   it('zone NOM DU PRODUIT a une bordure VERTE si nombre de caractères suffisant', () => {
-    page.setZoneProblemeCaracteresInsuffisant();  
+    page.setZoneProblemeCaracteresSuffisant();  
     expect(page.obtenirClasseZoneNomProduit()).toContain('is-valid');
   });  
 
   it('zone NOM DU PRODUIT a une bordure ROUGE si nombre de caractères insuffisant', () => {
-    page.setZoneProblemeCaracteresSuffisant();  
+    page.setZoneProblemeCaracteresInsuffisant();  
     expect(page.obtenirClasseZoneNomProduit()).toContain('is-invalid');
   });  
 });
